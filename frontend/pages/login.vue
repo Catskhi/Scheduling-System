@@ -2,6 +2,10 @@
 import axios from 'axios'
 import { getIsLogged } from '~/utils/AuthUtils';
 
+definePageMeta({
+    layout: false
+})
+
 const loading = ref<boolean>(false)
 const hasErrors = ref<boolean>(false)
 const isLogged = ref<boolean>(false)

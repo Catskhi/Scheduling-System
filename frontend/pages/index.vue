@@ -39,7 +39,7 @@ onBeforeMount(async () => {
             Criar Evento <Icon name="ic:baseline-plus" class="ml-3" />
         </button> 
         <button 
-            v-if="userData?.user_type === 1"
+            v-if="userData?.user_type == 1"
             class="shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white px-10 py-1 rounded
             flex items-center justify-center text-lg mt-7
             hover:scale-95 active:scale-90 transition-all duration-150

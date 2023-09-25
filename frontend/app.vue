@@ -1,11 +1,15 @@
 <template>
-
+  <NuxtLayout />  
   <div>
     <NuxtPage />
   </div>
 </template>
 
 <style>
+
+body {
+  @apply bg-gradient-cyan;
+}
 
 .bg-gradient-cyan {
     background: rgb(0,36,116);
