@@ -58,19 +58,30 @@ class ReadyMessages():
 
 Editado por: *{edited_by}*
 
-======================= Antes =======================
+========= Antes =========
 """
 
         message = message + self.event_default_message(owner, old_title, old_address, old_technical, old_description, old_date, old_start_time, old_end_time)
 
         message = message + """
-======================= Depois =======================      
+========= Depois =========     
 """
 
         message = message + self.event_default_message(owner, new_title, new_address, new_technical, new_description, new_date, new_start_time, new_end_time)
 
         return message
     
+
+    def deleted_event_message(self, deleted_by, owner, title, address, technical, description, date, start_time, end_time):
+        message = f"""
+        *Evento Deletado 🗑*
+
+Deletado por: *{deleted_by}*
+"""    
+        message = message + self.event_default_message(owner, title, address, technical, description, date, start_time, end_time)
+
+        return message
+        
     
 
     def event_default_message(self, owner, title, address, technical, description, date, start_time, end_time):

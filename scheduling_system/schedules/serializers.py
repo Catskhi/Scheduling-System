@@ -1,5 +1,5 @@
 from rest_framework import serializers, permissions
-from .models import Event, Technical, Changes
+from .models import Event, Technical, Changes, Deleted_Event
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,4 +14,9 @@ class ChangesSerializer(serializers.ModelSerializer):
 class TechnicalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Technical
+        fields = '__all__'
+
+class DeletedEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Deleted_Event
         fields = '__all__'

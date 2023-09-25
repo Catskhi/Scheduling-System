@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Event, Technical, Changes
 from authentication.models import AppUser
-from .serializers import EventSerializer, ChangesSerializer, TechnicalSerializer
+from .serializers import EventSerializer, ChangesSerializer, TechnicalSerializer, DeletedEventSerializer
 from rest_framework import generics, permissions
 from rest_framework.exceptions import ValidationError
 from .telegram import SmithSegBot
@@ -43,7 +43,41 @@ class EventDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_destroy(self, instance):
-        SmithSegBot.send_admin_message("""Evento Deletado""")
+
+        deleted_event_data = EventSerializer(instance).data
+        owner_name = AppUser.objects.get(id=deleted_event_data.get('owner')).username
+        technical_name = Technical.objects.get(id=deleted_event_data.get('technical')).name
+        deleted_by_name = AppUser.objects.get(id=self.request.user.id).username
+
+        done_message = ReadyMessages().deleted_event_message(deleted_by_name,
+                                owner_name,
+                                deleted_event_data.get('title'),
+                                deleted_event_data.get('address'),
+                                technical_name,
+                                deleted_event_data.get('description'),
+                                deleted_event_data.get('date'),
+                                deleted_event_data.get('start_time'),
+                                deleted_event_data.get('end_time')
+        )
+
+        deleted_data = {
+            'owner': deleted_event_data.get('owner'),
+            'deleted_by': self.request.user.id,
+            'title': deleted_event_data.get('title'),
+            'address': deleted_event_data.get('address'),
+            'technical': deleted_event_data.get('technical'),
+            'description': deleted_event_data.get('description'),
+            'date': deleted_event_data.get('date'),
+            'start_time': deleted_event_data.get('start_time'),
+            'end_time': deleted_event_data.get('end_time'),
+        }
+        deleted_event_serializer = DeletedEventSerializer(data=deleted_data)
+        if deleted_event_serializer.is_valid():
+            deleted_event_serializer.save()
+        else:
+            raise ValueError("Can't save deleted event on database.")
+
+        SmithSegBot.send_admin_message(done_message) 
 
         instance.delete()
 

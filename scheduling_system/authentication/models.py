@@ -33,9 +33,9 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     user_type_choices = [
-        (1, "Admin"),
-        (2, "Supervisor"),
-        (3, "Técnico"),
+        ('1', "Admin"),
+        ('2', "Supervisor"),
+        ('3', "Técnico"),
     ]
     user_type = models.CharField(max_length=20, choices=user_type_choices)
 
