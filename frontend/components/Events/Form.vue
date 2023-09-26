@@ -117,7 +117,7 @@ const performFormAction = async () => {
 </script>
 
 <template>
-<main class="absolute w-full h-full bg-gradient-cyan flex items-center justify-center">
+<main class="absolute w-full h-full flex items-center justify-center">
     <div class="shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-3/4 h-[95%] lg:w-1/3 bg-white rounded">
         <form class="px-10 flex flex-col">
             <h1 class="text-center mt-7 text-2xl font-bold">
@@ -178,7 +178,7 @@ const performFormAction = async () => {
                 class="border-2 focus:outline-none focus:ring-2 ring-cyan-400
                         transition-all duration-300 rounded px-3 py-1s"
             />  
-            <button type="button" class="bg-cyan-500 text-white font-bold mt-5 py-2 rounded
+            <button type="button" class="bg-blue-600 text-white font-bold mt-5 py-2 rounded
                 hover:bg-cyan-600 transition-all duration-150
                 hover:scale-95 active:scale-90
             "

@@ -4,6 +4,17 @@ export default defineNuxtConfig({
   pages: true,
   modules: [
     '@nuxtjs/tailwindcss',
-    'nuxt-icon'
+    'nuxt-icon',
+    // '@invictus.codes/nuxt-vuetify',
   ],
+  // vuetify: {
+  //   vuetifyOptions: {
+  //     theme: {
+  //       defaultTheme: 'light'
+  //     }
+  //   },
+  //   moduleOptions: {
+  //     autoImport: true
+  //   }
+  // }
 })

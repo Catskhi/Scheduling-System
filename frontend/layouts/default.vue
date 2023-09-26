@@ -9,14 +9,19 @@ const logout = async () => {
 
 <template>
 <header>
-    <nav class="w-full h-14 backdrop-blur flex items-center px-10 z-0">
-        <button class="bg-red-600 text-white font-bold px-10 py-1
-            rounded hover:scale-95 active:scale-90 transition-all duration-150
-        "
-            @click="logout"
-        >
-            Sair
-        </button>
+    <nav class="shadow-[0_3px_10px_rgb(0,0,0,0.2)]
+    w-full h-20 backdrop-blur flex items-center px-10 z-0 bg-slate-50
+    space-x-5">
+        <NuxtLink to="/" class="text-2xl font-semibold">Eventos</NuxtLink>
+        <div class="absolute right-5">
+            <button class="bg-red-600 text-white font-bold px-10 py-1
+                rounded hover:scale-95 active:scale-90 transition-all duration-150
+            "
+                @click="logout"
+            >
+                Sair
+            </button>
+        </div>
     </nav>
 </header>
 </template>

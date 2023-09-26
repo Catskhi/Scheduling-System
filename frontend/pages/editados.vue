@@ -48,11 +48,8 @@ onBeforeMount(async () => {
 
 <template>
 <CustomLoading :is-loading="pageLoading" />
-<div class="bg-gradient-cyan  w-full h-full fixed pointer-events-none">
-
-</div>
-<main class="absolute h-full w-full">
-    <h1 class="text-center text-3xl font-bold mt-10 text-white">
+<main class="h-full w-full">
+    <h1 class="text-center text-3xl font-bold mt-10 text-black">
         Eventos Editados
     </h1>
     <div class="mt-10 grid grid-cols-3 items-center justify-center px-5 gap-x-5 gap-y-5 mb-10">
